@@ -5,9 +5,34 @@ import './App.css';
 function App() {
 
   const [time, SetTime]= useState(25);
-  const [brk, setBrk] = useState(0);
-  const [start, SetStart] = useState(false);
-  const [stop, SetStop] = useState();  
+  const [second, SetSecond] = useState(60);
+  //const [brk, setBrk] = useState(0);
+//const [start, SetStart] = useState(false);
+ // const [stop, SetStop] = useState();  
+
+ 
+//useEffect(() => {
+  
+  
+//}, [])
+
+
+
+
+ const fuck = () =>{
+      SetSecond(second - 1);
+      if(second === 0){
+        SetTime(time - 1);
+        SetSecond(second + 60);
+      }
+ }
+  const timer = () =>{
+        if(time !== 0){
+        var  interval = setInterval(fuck(), 1000);
+        }else{
+          clearInterval(interval);
+        }
+  }
 
   const inctme = () =>{
           if(time >= 25){
@@ -25,10 +50,10 @@ function App() {
     
     
 
-    <h1>{time}</h1>
+    <h1>{time}: {second}</h1>
 
     <div>
-      <button>Start</button>
+      <button onClick={timer}>Start</button>
       <button>Stop</button>
     </div>
 
